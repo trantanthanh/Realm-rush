@@ -28,7 +28,7 @@ public class CoordinateLabeler : MonoBehaviour
 
     private void UpdateObjectName()
     {
-        transform.parent.name = label.text;
+        transform.parent.name = coordinates.ToString();
     }
 
     private void DisplayCoordinates()
