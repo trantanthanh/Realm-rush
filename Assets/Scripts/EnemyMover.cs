@@ -5,18 +5,21 @@ using UnityEngine;
 
 public class EnemyMover : MonoBehaviour
 {
-    [SerializeField] List<Waypoint> path;
+    [SerializeField] List<Waypoint> path = new List<Waypoint>();
+    [SerializeField] float timeMovingPerTile = 1.0f;
+
     // Start is called before the first frame update
     void Start()
     {
-        //PrintWaypointsName();
+        StartCoroutine(FollowPath());
     }
 
-    private void PrintWaypointsName()
+    IEnumerator FollowPath()
     {
-        foreach (var waypoint in path)
+        foreach (Waypoint waypoint in path)
         {
-            Debug.Log(waypoint.name);
+            transform.position = waypoint.transform.position;
+            yield return new WaitForSeconds(timeMovingPerTile);
         }
     }
 
