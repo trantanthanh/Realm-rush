@@ -6,11 +6,11 @@ using UnityEngine;
 public class TargetLocator : MonoBehaviour
 {
     [SerializeField] Transform weapon;
-    Transform target;
+    EnemyMover target;
     // Start is called before the first frame update
     void Start()
     {
-        target = FindObjectOfType<EnemyMover>().transform;
+        target = FindObjectOfType<EnemyMover>();
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class TargetLocator : MonoBehaviour
     {
         if (target != null && weapon != null)
         {
-            weapon.LookAt(target);
+            weapon.LookAt(target.transform);
         }
     }
 }
