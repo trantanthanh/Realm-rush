@@ -12,6 +12,7 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] int poolSize = 5;
     List<GameObject> pool = new List<GameObject>();
     // Start is called before the first frame update
+    
     void Start()
     {
         //PopulatePool();
@@ -33,7 +34,7 @@ public class ObjectPool : MonoBehaviour
         //Debug.Log(pool.Count);
         for (int i = 0; i < pool.Count; i++)
         {
-            if (!pool[i].activeSelf)
+            if (!pool[i].activeInHierarchy)
             {
                 return pool[i];
             }
