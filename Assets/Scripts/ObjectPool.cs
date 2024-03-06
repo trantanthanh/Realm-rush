@@ -10,32 +10,41 @@ public class ObjectPool : MonoBehaviour
 
     //Object pool
     [SerializeField] int poolSize = 5;
-    GameObject[] pool;
+    List<GameObject> pool = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
-        PopulatePool();
+        //PopulatePool();
         StartCoroutine(SpawnEnemy());
     }
 
-    private void PopulatePool()
-    {
-        pool = new GameObject[poolSize];
-        for (int i = 0; i < pool.Length; ++i)
-        {
-            pool[i] = Instantiate(enemyPrefab, transform);
-            pool[i].SetActive(false);
-        }
-    }
+    //private void PopulatePool()
+    //{
+    //    pool = new GameObject[poolSize];
+    //    for (int i = 0; i < pool.Length; ++i)
+    //    {
+    //        pool[i] = Instantiate(enemyPrefab, transform);
+    //        pool[i].SetActive(false);
+    //    }
+    //}
 
     GameObject GetActiveEnemyInPool()
     {
-        for (int i = 0; i < pool.Length; i++)
+        //Debug.Log(pool.Count);
+        for (int i = 0; i < pool.Count; i++)
         {
             if (!pool[i].activeSelf)
             {
                 return pool[i];
             }
+        }
+
+        if (pool.Count < poolSize)
+        {
+            GameObject enemy = Instantiate(enemyPrefab, transform);
+            enemy.SetActive(false);
+            pool.Add(enemy);
+            return enemy;
         }
 
         return null;
@@ -55,6 +64,6 @@ public class ObjectPool : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
