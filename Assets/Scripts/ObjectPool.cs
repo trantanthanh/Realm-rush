@@ -28,19 +28,25 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    //GameObject GetActiveEnemyInPool()
-    //{
-    //    for (int i = 0; i < pool.Length; i++)
-    //    {
-    //        if (!pool[i].active) return pool[i];
-    //    }
-    //    return null;
-    //}
+    GameObject GetActiveEnemyInPool()
+    {
+        for (int i = 0; i < pool.Length; i++)
+        {
+            if (!pool[i].activeSelf)
+            {
+                return pool[i];
+            }
+        }
+
+        return null;
+    }
 
     IEnumerator SpawnEnemy()
     {
         while (true)
         {
+            GameObject enemy = GetActiveEnemyInPool();
+            if (enemy != null) enemy.SetActive(true);
             //Instantiate(enemyPrefab, transform);
             yield return new WaitForSeconds(timeSpawnInterval);
         }
