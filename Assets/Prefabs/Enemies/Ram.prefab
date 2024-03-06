@@ -173,7 +173,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  speed: 1
+  speed: 0.42
 --- !u!114 &-8550772204637336694
 MonoBehaviour:
   m_ObjectHideFlags: 0
