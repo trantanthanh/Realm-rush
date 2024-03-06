@@ -1,15 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyMover : MonoBehaviour
 {
     [SerializeField] List<Waypoint> path = new List<Waypoint>();
-    [SerializeField] [Range(0f, 5f)] float speed = 1.0f;
+    [SerializeField][Range(0f, 5f)] float speed = 1.0f;
 
     // Start is called before the first frame update
     void Start()
+    { 
+    }
+
+    void OnEnable()
     {
         FindPath();
         ReturnToStart();
@@ -46,13 +51,18 @@ public class EnemyMover : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
         }
+        FinishMove();
+    }
 
-        Destroy(gameObject);//destroy at the end position
+    void FinishMove()
+    {
+        //Destroy(gameObject);//destroy at the end position
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
