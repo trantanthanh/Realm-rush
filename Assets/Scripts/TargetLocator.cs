@@ -7,6 +7,7 @@ public class TargetLocator : MonoBehaviour
 {
     [SerializeField] Transform weapon;
     [SerializeField] float rangeAttack = 1f;
+    [SerializeField] ParticleSystem particleProjectile;
     float distanceToTarget = -1f;
     Enemy target = null;
     // Start is called before the first frame update
@@ -42,6 +43,7 @@ public class TargetLocator : MonoBehaviour
             {
                 distanceToTarget = distance;
                 target = enemies[0];
+                Attack(true);
             }
         }
     }
@@ -59,6 +61,19 @@ public class TargetLocator : MonoBehaviour
         if (target != null && weapon != null)
         {
             weapon.LookAt(target.transform);
+        }
+        else
+        {
+            Attack(false);
+        }
+    }
+
+    void Attack(bool isActive)
+    {
+        if (particleProjectile != null)
+        {
+            var emissionModule = particleProjectile.emission;
+            emissionModule.enabled = isActive;
         }
     }
 }

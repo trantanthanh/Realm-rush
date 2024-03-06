@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 3144582324300694500}
   rangeAttack: 15
+  particleProjectile: {fileID: 4803224550171024127}
 --- !u!1 &6131056645070147807
 GameObject:
   m_ObjectHideFlags: 0
