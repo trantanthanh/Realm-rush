@@ -1,18 +1,36 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Fund : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField] int startingBalance = 150;
+    int currentBalance;
+    public int CurrentBalance { 
+        get
+        {
+            return currentBalance;
+        }
+        set
+        {
+            currentBalance = value;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        
+        currentBalance = startingBalance;
+    }
+
+    public void Deposit(int amount)
+    {
+        currentBalance += Math.Abs(amount);
+    }
+
+    public void WithDaw(int amount)
+    {
+        currentBalance -= Math.Abs(amount);
+        if (currentBalance <= 0) currentBalance = 0;
     }
 }
