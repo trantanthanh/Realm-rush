@@ -13,13 +13,16 @@ public class Waypoint : MonoBehaviour
     }
 
 
-    [SerializeField] GameObject towerPrefab;
+    [SerializeField] Tower towerPrefab;
     void OnMouseDown()
     {
         if (isPlaceable)
         {
-            isPlaceable = false;
-            Instantiate(towerPrefab, transform.position, Quaternion.identity);
+            //Instantiate(towerPrefab, transform.position, Quaternion.identity);
+            if (towerPrefab.CreateTower(towerPrefab, transform.position))
+            {
+                isPlaceable = false;
+            }
         }
     }
 }

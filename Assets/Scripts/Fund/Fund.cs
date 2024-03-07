@@ -6,7 +6,7 @@ using UnityEngine;
 public class Fund : MonoBehaviour
 {
     [SerializeField] int startingBalance = 150;
-    int currentBalance;
+    public int currentBalance;
     public int CurrentBalance { 
         get
         {
