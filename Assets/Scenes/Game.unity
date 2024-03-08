@@ -460,6 +460,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingBalance: 150
   maxFundHealth: 20
+  textGold: {fileID: 1046057743}
+  textHealth: {fileID: 1093644694}
 --- !u!1001 &585509505
 PrefabInstance:
   m_ObjectHideFlags: 0
