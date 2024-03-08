@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,9 @@ public class Fund : MonoBehaviour
     int currentBalance;
     [SerializeField] int maxFundHealth = 20;
     int currentFundHeath;
+
+    [SerializeField] TextMeshProUGUI textGold;
+    [SerializeField] TextMeshProUGUI textHealth;
     public int CurrentBalance
     {
         get
@@ -38,17 +42,20 @@ public class Fund : MonoBehaviour
     {
         currentBalance = startingBalance;
         currentFundHeath = maxFundHealth;
+        UpdateUIText();
     }
 
     public void Deposit(int amount)
     {
         currentBalance += Math.Abs(amount);
+        UpdateUIText();
     }
 
     public void WithDaw(int amount)
     {
         currentBalance -= Math.Abs(amount);
         if (currentBalance <= 0) currentBalance = 0;
+        UpdateUIText();
     }
 
     public void DamageBank(int damage)
@@ -59,6 +66,13 @@ public class Fund : MonoBehaviour
             currentFundHeath = 0;
             ReloadScene();
         }
+        UpdateUIText();
+    }
+
+    void UpdateUIText()
+    {
+        textGold.text = $"Gold : {currentBalance}";
+        textHealth.text = $"Health : {currentFundHeath}";
     }
 
     void ReloadScene()
