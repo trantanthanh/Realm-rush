@@ -10,7 +10,8 @@ public class Tower : MonoBehaviour
     public bool CreateTower(Tower towerPrefab, Vector3 position)
     {
         Fund fund = FindObjectOfType<Fund>();
-        if (fund.CurrentBalance >= price)
+
+        if (fund != null && fund.CurrentBalance >= price)
         {
             fund.WithDaw(price);
             Instantiate(towerPrefab, position, Quaternion.identity);

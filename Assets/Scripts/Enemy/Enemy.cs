@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] int goldReward = 25;
-    [SerializeField] int goldPenalty = 25;
+    [SerializeField] int damageBank = 1;
 
     Fund fund;
     // Start is called before the first frame update
@@ -19,8 +19,8 @@ public class Enemy : MonoBehaviour
         fund.Deposit(goldReward);
     }
 
-    public void StealGold()
+    public void DamgeToBank()
     {
-        fund.WithDaw(goldPenalty);
+        fund.DamageBank(damageBank);
     }
 }

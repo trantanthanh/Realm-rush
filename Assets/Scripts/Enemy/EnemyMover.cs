@@ -60,7 +60,7 @@ public class EnemyMover : MonoBehaviour
     {
         //Destroy(gameObject);//destroy at the end position
         gameObject.SetActive(false);
-        enemy.StealGold();
+        enemy.DamgeToBank();
     }
 
     // Update is called once per frame
