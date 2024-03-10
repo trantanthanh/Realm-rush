@@ -12,7 +12,7 @@ public class EnemyMover : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    { 
+    {
         enemy = FindObjectOfType<Enemy>();
     }
 
@@ -32,9 +32,13 @@ public class EnemyMover : MonoBehaviour
         //    path.Add(waypoint.GetComponent<Waypoint>());
         //}
         GameObject pathParent = GameObject.FindGameObjectWithTag("Path");
-        foreach(Transform child in pathParent.transform)
+        foreach (Transform child in pathParent.transform)
         {
-            path.Add(child.GetComponent<Waypoint>());
+            Waypoint waypoint = child.GetComponent<Waypoint>();
+            if (waypoint != null)
+            {
+                path.Add(waypoint);
+            }
         }
     }
 

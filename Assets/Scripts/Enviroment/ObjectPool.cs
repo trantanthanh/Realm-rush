@@ -6,13 +6,13 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     [SerializeField] GameObject enemyPrefab;
-    [SerializeField] float timeSpawnInterval = 1f;
+    [SerializeField][Range(0.1f, 30f)] float timeSpawnInterval = 1f;
 
     //Object pool
-    [SerializeField] int poolSize = 5;
+    [SerializeField][Range(1, 100)] int poolSize = 5;
     List<GameObject> pool = new List<GameObject>();
     // Start is called before the first frame update
-    
+
     void Start()
     {
         //PopulatePool();
