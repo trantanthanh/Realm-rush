@@ -48,6 +48,7 @@ public class CoordinateLabeler : MonoBehaviour
     private void DisplayCoordinates()
     {
         if (label == null) return;
+        label.enabled = !false;
         coordinates.x = Mathf.RoundToInt(transform.position.x / 10);
         coordinates.y = Mathf.RoundToInt(transform.position.z / 10);
         label.text = $"{coordinates.x}, {coordinates.y}";
