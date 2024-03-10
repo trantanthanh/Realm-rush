@@ -173,7 +173,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  speed: 0.42
+  speed: 1
 --- !u!114 &-8550772204637336694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,3 +186,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 591e63ea195fe074e9546bb3de570352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goldReward: 25
+  damageBank: 1
