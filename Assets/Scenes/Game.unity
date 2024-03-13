@@ -16173,7 +16173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startCoordinates: {x: 0, y: 0}
-  destinateCoordinates: {x: 0, y: 0}
+  destinateCoordinates: {x: 6, y: 3}
 --- !u!4 &1600530237
 Transform:
   m_ObjectHideFlags: 0
