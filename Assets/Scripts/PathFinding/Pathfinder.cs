@@ -45,10 +45,6 @@ public class Pathfinder : MonoBehaviour
             if (grid.ContainsKey(neighborCoords))
             {
                 neighbors.Add(grid[neighborCoords]);
-
-                //Todo : remove after tested
-                //grid[neighborCoords].isExplored = true;
-                //currentSearchNode.isPath = true;
             }
         }
     }
