@@ -13,12 +13,12 @@ public class CoordinateLabeler : MonoBehaviour
     [SerializeField] Color pathColor = new Color( 0f, 1f, 0f);
     [SerializeField] TextMeshPro label;
     Vector2Int coordinates = new Vector2Int();
-    //Waypoint waypoint;
+    //Tile tile;
 
     GridManager gridManager;
     void Awake()
     {
-        //waypoint = GetComponentInParent<Waypoint>();
+        //tile = GetComponentInParent<Tile>();
         gridManager = FindObjectOfType<GridManager>();
         label = GetComponent<TextMeshPro>();
         label.enabled = false;
@@ -30,7 +30,7 @@ public class CoordinateLabeler : MonoBehaviour
 
     private void ColorCordinates()
     {
-        //label.color = waypoint.IsPlaceable ? defaultColor : blockedColor;
+        //label.color = tile.IsPlaceable ? defaultColor : blockedColor;
         if (gridManager == null) { return; }
         Node node = gridManager.Grid.ContainsKey(coordinates) ? gridManager.Grid[coordinates] : null;
         if (node == null) return;

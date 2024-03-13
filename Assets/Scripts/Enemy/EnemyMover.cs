@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class EnemyMover : MonoBehaviour
 {
-    [SerializeField] List<Waypoint> path = new List<Waypoint>();
+    [SerializeField] List<Tile> path = new List<Tile>();
     [SerializeField][Range(0f, 5f)] float speed = 1.0f;
     Enemy enemy;
 
@@ -27,17 +27,17 @@ public class EnemyMover : MonoBehaviour
     {
         path.Clear();
         //GameObject[] waypoints = GameObject.FindGameObjectsWithTag("Path");
-        //foreach (GameObject waypoint in waypoints)
+        //foreach (GameObject tile in waypoints)
         //{
-        //    path.Add(waypoint.GetComponent<Waypoint>());
+        //    path.Add(tile.GetComponent<Tile>());
         //}
         GameObject pathParent = GameObject.FindGameObjectWithTag("Path");
         foreach (Transform child in pathParent.transform)
         {
-            Waypoint waypoint = child.GetComponent<Waypoint>();
-            if (waypoint != null)
+            Tile tile = child.GetComponent<Tile>();
+            if (tile != null)
             {
-                path.Add(waypoint);
+                path.Add(tile);
             }
         }
     }
@@ -49,11 +49,11 @@ public class EnemyMover : MonoBehaviour
 
     IEnumerator FollowPath()
     {
-        foreach (Waypoint waypoint in path)
+        foreach (Tile tile in path)
         {
             float travelPercent = 0f;
             Vector3 startPosition = transform.position;
-            Vector3 endPostion = waypoint.transform.position;
+            Vector3 endPostion = tile.transform.position;
             transform.LookAt(endPostion);
             while (travelPercent < 1.0f)
             {
