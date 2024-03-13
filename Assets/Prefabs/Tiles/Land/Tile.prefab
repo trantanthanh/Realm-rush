@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlaceable: 1
+  isRoad: 0
   towerPrefab: {fileID: -1447226701361274519, guid: 8a965e088bae16643aab3d07ccfd5e2e, type: 3}
 --- !u!1 &4854670602239400519
 GameObject:

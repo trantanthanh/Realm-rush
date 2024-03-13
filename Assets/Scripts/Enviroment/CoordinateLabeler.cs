@@ -3,6 +3,7 @@ using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
+[DefaultExecutionOrder(10)]
 [ExecuteAlways]
 [RequireComponent(typeof(TextMeshPro))]
 public class CoordinateLabeler : MonoBehaviour
@@ -72,10 +73,12 @@ public class CoordinateLabeler : MonoBehaviour
 
     private void DisplayCoordinates()
     {
-        if (label == null) return;
+        if (label == null || gridManager == null) return;
         label.enabled = !false;
-        coordinates.x = Mathf.RoundToInt(transform.position.x / 10);
-        coordinates.y = Mathf.RoundToInt(transform.position.z / 10);
+        //coordinates.x = Mathf.RoundToInt(transform.position.x / 10);
+        //coordinates.y = Mathf.RoundToInt(transform.position.z / 10);
+        coordinates.x = Mathf.RoundToInt(transform.parent.position.x / gridManager.UnityGridSize);
+        coordinates.y = Mathf.RoundToInt(transform.parent.position.z / gridManager.UnityGridSize);
         label.text = $"{coordinates.x}, {coordinates.y}";
     }
 

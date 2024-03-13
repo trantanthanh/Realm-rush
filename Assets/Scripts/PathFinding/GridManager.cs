@@ -6,6 +6,16 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
     [SerializeField] Vector2Int gridSize;
+    [Tooltip("World Grid Size should match with Unity UnityEditor.EditorSnapSettings.move.x")]
+    [SerializeField] int unityGridSize = 10;
+    public int UnityGridSize
+    {
+        get
+        {
+            return unityGridSize;
+        }
+    }
+
     [SerializeField] Vector2Int startCoordinates;
     [SerializeField] Vector2Int destinationCoordinates;
 
@@ -55,5 +65,28 @@ public class GridManager : MonoBehaviour
                 //Debug.Log("grid[coordinates].coordinates = " + grid[coordinates].coordinates);
             }
         }
+    }
+
+    public void BlockNode(Vector3 position)
+    {
+        Vector2Int coordinates = GetCoordinatesFromPosition(position);
+        if (grid.ContainsKey(coordinates))
+        {
+            grid[coordinates].isWalkable = false;
+        }
+    }
+
+    public Vector2Int GetCoordinatesFromPosition(Vector3 position)
+    {
+        Vector2Int coordinates = new Vector2Int();
+        coordinates.x = Mathf.RoundToInt(position.x / unityGridSize);
+        coordinates.y = Mathf.RoundToInt(position.z / unityGridSize);
+        return coordinates;
+    }
+
+    public Vector3 GetPositionFromCoordiates(Vector2Int coordinates)
+    {
+        Vector3 position = new Vector3(coordinates.x * unityGridSize, 0, coordinates.y * unityGridSize);
+        return position;
     }
 }

@@ -4,11 +4,26 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     [SerializeField] bool isPlaceable;
+    [SerializeField] bool isRoad;
+    GridManager gridManager;
     public bool IsPlaceable
     {
         get
         {
             return isPlaceable;
+        }
+    }
+
+    void Start()
+    {
+        gridManager = FindObjectOfType<GridManager>();
+
+        if (gridManager != null )
+        {
+            if (!isPlaceable && !isRoad)
+            {
+                gridManager.BlockNode(transform.position);
+            }
         }
     }
 

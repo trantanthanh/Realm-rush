@@ -37,6 +37,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8388765391620339369, guid: 7adfadc8ccc91c7429fc515c71f1da9b, type: 3}
+      propertyPath: isRoad
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8388765391620339369, guid: 7adfadc8ccc91c7429fc515c71f1da9b, type: 3}
       propertyPath: isPlaceable
       value: 0
       objectReference: {fileID: 0}
