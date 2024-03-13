@@ -10,7 +10,7 @@ public class CoordinateLabeler : MonoBehaviour
     [SerializeField] Color defaultColor = Color.white;
     [SerializeField] Color blockedColor = Color.red;
     [SerializeField] Color exploredColor = Color.yellow;
-    [SerializeField] Color pathColor = Color.green;
+    [SerializeField] Color pathColor = new Color( 0f, 1f, 0f);
     [SerializeField] TextMeshPro label;
     Vector2Int coordinates = new Vector2Int();
     //Waypoint waypoint;

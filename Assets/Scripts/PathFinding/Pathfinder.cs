@@ -5,10 +5,19 @@ using UnityEngine;
 
 public class Pathfinder : MonoBehaviour
 {
-    [SerializeField] Node currentSearchNode;
+    [SerializeField] Vector2Int startCoordinates;
+    [SerializeField] Vector2Int destinateCoordinates;
+
+    Node startNode;
+    Node destinateNode;
+    Node currentSearchNode;
+
+    Queue<Node> frontier = new Queue<Node>();
+    Dictionary<Vector2Int, Node> reached;
+    Dictionary<Vector2Int, Node> grid;
+
     Vector2Int[] direnctions = { Vector2Int.right, Vector2Int.left, Vector2Int.up, Vector2Int.down };
     GridManager gridManager;
-    Dictionary<Vector2Int, Node> grid;
 
     void Awake()
     {
@@ -17,11 +26,13 @@ public class Pathfinder : MonoBehaviour
         {
             grid = gridManager.Grid;
         }
+
+        startNode = new Node(startCoordinates, true);
+        destinateNode = new Node(destinateCoordinates, true);
     }
 
     void Start()
     {
-        ExplorerNeighbors();
     }
 
     private void ExplorerNeighbors()
@@ -36,8 +47,25 @@ public class Pathfinder : MonoBehaviour
                 neighbors.Add(grid[neighborCoords]);
 
                 //Todo : remove after tested
-                grid[neighborCoords].isExplored = true;
-                grid[neighborCoords].isPath = true;
+                //grid[neighborCoords].isExplored = true;
+                //currentSearchNode.isPath = true;
+            }
+        }
+    }
+
+    void BreathFirstSearch()
+    {
+        bool isRunning = true;
+
+        frontier.Enqueue(startNode);
+
+        while (frontier.Count > 0 && isRunning)
+        {
+            currentSearchNode = frontier.Dequeue();
+            ExplorerNeighbors();
+            if (currentSearchNode.coordinates == destinateCoordinates)
+            {
+                isRunning = false;
             }
         }
     }
