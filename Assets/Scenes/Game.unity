@@ -4516,6 +4516,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridSize: {x: 11, y: 8}
+  startCoordinates: {x: 0, y: 0}
+  destinationCoordinates: {x: 10, y: 7}
 --- !u!4 &442797818
 Transform:
   m_ObjectHideFlags: 0
@@ -16172,8 +16174,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540d4eceaec03a548af3a72612fa3ba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startCoordinates: {x: 0, y: 0}
-  destinateCoordinates: {x: 6, y: 3}
 --- !u!4 &1600530237
 Transform:
   m_ObjectHideFlags: 0

@@ -6,12 +6,33 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
     [SerializeField] Vector2Int gridSize;
+    [SerializeField] Vector2Int startCoordinates;
+    [SerializeField] Vector2Int destinationCoordinates;
+
+    public Vector2Int StartCoordinates
+    {
+        get
+        {
+            return startCoordinates;
+        }
+    }
+    public Vector2Int DestinationCoordinates
+    {
+        get
+        {
+            return destinationCoordinates;
+        }
+    }
+
     Dictionary<Vector2Int, Node> grid = new Dictionary<Vector2Int, Node>();
-    public Dictionary<Vector2Int, Node> Grid {
-        get {
+    public Dictionary<Vector2Int, Node> Grid
+    {
+        get
+        {
             return grid;
         }
-        set {
+        set
+        {
             grid = value;
         }
     }

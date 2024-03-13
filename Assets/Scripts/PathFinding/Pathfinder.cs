@@ -6,9 +6,6 @@ using UnityEngine;
 [DefaultExecutionOrder(999)]
 public class Pathfinder : MonoBehaviour
 {
-    [SerializeField] Vector2Int startCoordinates;
-    [SerializeField] Vector2Int destinateCoordinates;
-
     Node startNode;
     Node destinateNode;
     Node currentSearchNode;
@@ -17,7 +14,9 @@ public class Pathfinder : MonoBehaviour
     Dictionary<Vector2Int, Node> reached = new Dictionary<Vector2Int, Node>();
     Dictionary<Vector2Int, Node> grid = new Dictionary<Vector2Int, Node>();
 
-    Vector2Int[] direnctions = { Vector2Int.right, Vector2Int.left, Vector2Int.up, Vector2Int.down };
+    //Vector2Int[] direnctions = { Vector2Int.right, Vector2Int.left, Vector2Int.up, Vector2Int.down };
+    //Vector2Int[] direnctions = { Vector2Int.up, Vector2Int.left, Vector2Int.right, Vector2Int.down };
+    Vector2Int[] direnctions = { Vector2Int.down, Vector2Int.right, Vector2Int.up, Vector2Int.left };
     GridManager gridManager;
 
     void Awake()
@@ -28,13 +27,14 @@ public class Pathfinder : MonoBehaviour
             grid = gridManager.Grid;
         }
 
-        startNode = new Node(startCoordinates, true);
-        destinateNode = new Node(destinateCoordinates, true);
+        startNode = grid[gridManager.StartCoordinates];
+        destinateNode = grid[gridManager.DestinationCoordinates];
     }
 
     void Start()
     {
         BreadthFirstSearch();
+        BuildPath();
     }
 
     private void ExplorerNeighbors()
@@ -50,10 +50,11 @@ public class Pathfinder : MonoBehaviour
             }
         }
 
-        foreach (Node neighbor in  neighbors)
+        foreach (Node neighbor in neighbors)
         {
-            if (!reached.ContainsKey(neighbor.coordinates) && neighbor.isWalkable)
+            if (!reached.ContainsKey(neighbor.coordinates) && neighbor.isWalkable && !neighbor.isExplored)
             {
+                neighbor.isConnectedTo = currentSearchNode;
                 reached.Add(neighbor.coordinates, neighbor);
                 frontier.Enqueue(neighbor);
             }
@@ -71,10 +72,29 @@ public class Pathfinder : MonoBehaviour
             currentSearchNode = frontier.Dequeue();
             currentSearchNode.isExplored = true;
             ExplorerNeighbors();
-            if (currentSearchNode.coordinates == destinateCoordinates)
+            if (currentSearchNode.coordinates == gridManager.DestinationCoordinates)
             {
                 isRunning = false;
             }
         }
+    }
+
+    List<Node> BuildPath()
+    {
+        List<Node> path = new List<Node> ();
+
+        Node currentNode = destinateNode;
+        currentNode.isPath = true;
+        path.Add(currentNode);
+
+        while (currentNode.isConnectedTo != null)
+        {
+            currentNode = currentNode.isConnectedTo;
+            currentNode.isPath = true;
+            path.Add(currentNode);
+        }
+
+        path.Reverse();
+        return path;
     }
 }
