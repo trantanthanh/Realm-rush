@@ -6,57 +6,48 @@ using UnityEngine;
 
 public class EnemyMover : MonoBehaviour
 {
-    [SerializeField] List<Tile> path = new List<Tile>();
+    //[SerializeField] List<Tile> path = new List<Tile>();
     [SerializeField][Range(0f, 5f)] float speed = 1.0f;
+
+    List<Node> path = new List<Node>();
     Enemy enemy;
 
+    GridManager gridManager;
+    Pathfinder pathfinder;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         enemy = FindObjectOfType<Enemy>();
+        gridManager = FindObjectOfType<GridManager>();
+        pathfinder = FindObjectOfType<Pathfinder>();
     }
 
     void OnEnable()
     {
-        //FindPath();
-        //ReturnToStart();
-        //StartCoroutine(FollowPath());
+        FindPath();
+        ReturnToStart();
+        StartCoroutine(FollowPath());
     }
 
     void FindPath()
     {
         path.Clear();
-        //GameObject[] waypoints = GameObject.FindGameObjectsWithTag("Path");
-        //foreach (GameObject tile in waypoints)
-        //{
-        //    path.Add(tile.GetComponent<Tile>());
-        //}
-        GameObject pathParent = GameObject.FindGameObjectWithTag("Path");
-        if (pathParent != null)
-        {
-            foreach (Transform child in pathParent.transform)
-            {
-                Tile tile = child.GetComponent<Tile>();
-                if (tile != null)
-                {
-                    path.Add(tile);
-                }
-            }
-        }
+        path = pathfinder.GetNewPath();
     }
 
     void ReturnToStart()
     {
-        transform.position = path[0].transform.position;
+        transform.position = gridManager.GetPositionFromCoordiates(gridManager.StartCoordinates);
     }
 
     IEnumerator FollowPath()
     {
-        foreach (Tile tile in path)
+        foreach (Node node in path)
         {
             float travelPercent = 0f;
             Vector3 startPosition = transform.position;
-            Vector3 endPostion = tile.transform.position;
+            Vector3 endPostion = gridManager.GetPositionFromCoordiates(node.coordinates);
             transform.LookAt(endPostion);
             while (travelPercent < 1.0f)
             {
