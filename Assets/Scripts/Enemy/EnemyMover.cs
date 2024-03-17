@@ -18,9 +18,9 @@ public class EnemyMover : MonoBehaviour
 
     void OnEnable()
     {
-        FindPath();
-        ReturnToStart();
-        StartCoroutine(FollowPath());
+        //FindPath();
+        //ReturnToStart();
+        //StartCoroutine(FollowPath());
     }
 
     void FindPath()
@@ -32,12 +32,15 @@ public class EnemyMover : MonoBehaviour
         //    path.Add(tile.GetComponent<Tile>());
         //}
         GameObject pathParent = GameObject.FindGameObjectWithTag("Path");
-        foreach (Transform child in pathParent.transform)
+        if (pathParent != null)
         {
-            Tile tile = child.GetComponent<Tile>();
-            if (tile != null)
+            foreach (Transform child in pathParent.transform)
             {
-                path.Add(tile);
+                Tile tile = child.GetComponent<Tile>();
+                if (tile != null)
+                {
+                    path.Add(tile);
+                }
             }
         }
     }
