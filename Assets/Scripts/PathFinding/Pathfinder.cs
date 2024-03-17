@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[DefaultExecutionOrder(999)]
 public class Pathfinder : MonoBehaviour
 {
     Node startNode;
