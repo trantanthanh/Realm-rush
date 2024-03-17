@@ -67,12 +67,21 @@ public class GridManager : MonoBehaviour
         }
     }
 
-    public void BlockNode(Vector3 position)
+    public void BlockNode(Vector2Int coordinates)
     {
-        Vector2Int coordinates = GetCoordinatesFromPosition(position);
         if (grid.ContainsKey(coordinates))
         {
             grid[coordinates].isWalkable = false;
+        }
+    }
+
+    public void ResetNode()
+    {
+        foreach(KeyValuePair<Vector2Int, Node> entry in grid)
+        {
+            entry.Value.isConnectedTo = null;
+            entry.Value.isExplored = false;
+            entry.Value.isPath = false;
         }
     }
 

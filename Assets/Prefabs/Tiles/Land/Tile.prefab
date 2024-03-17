@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8601676648787435056}
   - component: {fileID: 8388765391620339369}
+  - component: {fileID: 5628416168964848571}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Untagged
@@ -49,6 +50,27 @@ MonoBehaviour:
   isPlaceable: 1
   isRoad: 0
   towerPrefab: {fileID: -1447226701361274519, guid: 8a965e088bae16643aab3d07ccfd5e2e, type: 3}
+--- !u!65 &5628416168964848571
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3845407187400534550}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10.047465, y: 0.660684, z: 9.996628}
+  m_Center: {x: -0.050745487, y: -0.310342, z: 0.054174423}
 --- !u!1 &4854670602239400519
 GameObject:
   m_ObjectHideFlags: 0
