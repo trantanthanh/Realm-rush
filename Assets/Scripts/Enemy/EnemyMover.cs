@@ -34,6 +34,7 @@ public class EnemyMover : MonoBehaviour
     //void FindPath()
     void RecalculatePath()
     {
+        //Debug.Log("RecalculatePath");
         path.Clear();
         path = pathfinder.GetNewPath();
     }
