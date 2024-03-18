@@ -44,8 +44,10 @@ public class EnemyMover : MonoBehaviour
         {
             coordinates = gridManager.GetCoordinatesFromPosition(transform.position);
         }
+        StopAllCoroutines();
         path.Clear();
         path = pathfinder.GetNewPath(coordinates);
+        StartCoroutine(FollowPath());
     }
 
     void ReturnToStart()
