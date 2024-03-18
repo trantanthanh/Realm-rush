@@ -57,7 +57,7 @@ public class EnemyMover : MonoBehaviour
 
     IEnumerator FollowPath()
     {
-        for (int i = 0; i < path.Count;++i)
+        for (int i = 1; i < path.Count;++i)
         {
             float travelPercent = 0f;
             Vector3 startPosition = transform.position;

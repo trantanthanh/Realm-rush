@@ -117,7 +117,7 @@ public class Pathfinder : MonoBehaviour
             grid[coordinates].isWalkable = previousState;
 
 
-            if (newPath.Count < 1)
+            if (newPath.Count < 2)
             {
                 GetNewPath(gridManager.StartCoordinates);
                 return true;
