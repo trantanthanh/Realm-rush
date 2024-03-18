@@ -32,11 +32,20 @@ public class EnemyMover : MonoBehaviour
     }
 
     //void FindPath()
-    void RecalculatePath()
+    void RecalculatePath(bool isResetPath = true)
     {
         //Debug.Log("RecalculatePath");
+        Vector2Int coordinates = new Vector2Int();
+        if (isResetPath)
+        {
+            coordinates = gridManager.StartCoordinates;
+        }
+        else
+        {
+            coordinates = gridManager.GetCoordinatesFromPosition(transform.position);
+        }
         path.Clear();
-        path = pathfinder.GetNewPath();
+        path = pathfinder.GetNewPath(coordinates);
     }
 
     void ReturnToStart()
