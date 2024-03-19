@@ -4808,7 +4808,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19deecbdabfbdcc4ba0ca02917f0a1be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSize: {x: 11, y: 8}
+  gridCoordinatesStart: {x: -6, y: -1}
+  gridCoordinatesEnd: {x: 14, y: 8}
   unityGridSize: 10
   startCoordinates: {x: 0, y: 0}
   destinationCoordinates: {x: 10, y: 7}
