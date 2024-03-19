@@ -8,7 +8,9 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] int maxHitPoint = 5;
+    int startHitPoint = 1;
     int currentHitPoints = 0;
+    int hitPointStrongOvertime = 0;
     Enemy enemy;
 
     // Start is called before the first frame update
@@ -19,7 +21,11 @@ public class EnemyHealth : MonoBehaviour
 
     void OnEnable()
     {
-        currentHitPoints = maxHitPoint;
+        currentHitPoints = startHitPoint + hitPointStrongOvertime;
+        if (currentHitPoints > maxHitPoint)
+        {
+            currentHitPoints = maxHitPoint;
+        }
     }
 
     // Update is called once per frame
@@ -45,6 +51,7 @@ public class EnemyHealth : MonoBehaviour
     private void Death()
     {
         //Destroy(gameObject);
+        ++hitPointStrongOvertime;
         gameObject.SetActive(false);
         enemy.RewardGold();
     }

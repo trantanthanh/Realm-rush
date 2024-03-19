@@ -23487,7 +23487,7 @@ PrefabInstance:
       objectReference: {fileID: 1391240885}
     - target: {fileID: 8273890208089325354, guid: d5449afc7ef78ca4c85eb7c6cd8156dc, type: 3}
       propertyPath: startingBalance
-      value: 2000
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
