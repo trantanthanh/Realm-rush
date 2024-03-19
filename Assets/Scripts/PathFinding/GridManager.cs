@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    [SerializeField] Vector2Int gridSize;
+    [SerializeField] Vector2Int gridCoordinatesStart;
+    [SerializeField] Vector2Int gridCoordinatesEnd;
     [Tooltip("World Grid Size should match with Unity UnityEditor.EditorSnapSettings.move.x")]
     [SerializeField] int unityGridSize = 10;
     public int UnityGridSize
@@ -55,9 +56,9 @@ public class GridManager : MonoBehaviour
 
     private void CreateGrid()
     {
-        for (int x = 0; x < gridSize.x; ++x)
+        for (int x = gridCoordinatesStart.x; x <= gridCoordinatesEnd.x; ++x)
         {
-            for (int y = 0; y < gridSize.y; ++y)
+            for (int y = gridCoordinatesStart.y; y <= gridCoordinatesEnd.y; ++y)
             {
                 Vector2Int coordinates = new Vector2Int(x, y);
 
