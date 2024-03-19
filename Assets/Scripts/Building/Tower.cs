@@ -10,7 +10,7 @@ public class Tower : MonoBehaviour
 
     void Start()
     {
-        
+        StartCoroutine(Build());
     }
 
     public bool CreateTower(Tower towerPrefab, Vector3 position)
@@ -40,8 +40,8 @@ public class Tower : MonoBehaviour
 
         foreach (Transform child in transform)
         {
-            child.gameObject.SetActive(true);
 
+            child.gameObject.SetActive(true);
             yield return new WaitForSeconds(buildDelay);
 
             foreach (Transform grandChild in child)
