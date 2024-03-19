@@ -58,6 +58,7 @@ public class CoordinateLabeler : MonoBehaviour
     {
         if (!Application.isPlaying)
         {
+            label.enabled = !false;
             DisplayCoordinates();
             UpdateObjectName();
         }
@@ -74,7 +75,6 @@ public class CoordinateLabeler : MonoBehaviour
     private void DisplayCoordinates()
     {
         if (label == null || gridManager == null) return;
-        label.enabled = !false;
         //coordinates.x = Mathf.RoundToInt(transform.position.x / 10);
         //coordinates.y = Mathf.RoundToInt(transform.position.z / 10);
         coordinates.x = Mathf.RoundToInt(transform.parent.position.x / gridManager.UnityGridSize);
